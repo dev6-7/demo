@@ -1,5 +1,6 @@
 package com.example.demo.resource;
 
+import com.example.demo.model.dto.TaskDTO;
 import com.example.demo.model.entity.Task;
 import com.example.demo.service.TaskService;
 import lombok.RequiredArgsConstructor;
@@ -19,11 +20,10 @@ public class TaskController {
     @GetMapping(produces = "application/json")
     public Task getTask() {
         return new Task(1L, "asd", "asd");
-        //return "test";
     }
 
     @GetMapping(path = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public Task getTaskById(@PathVariable Long id) {
+    public TaskDTO getTaskById(@PathVariable Long id) {
         return taskService.getTask(id);
     }
 }

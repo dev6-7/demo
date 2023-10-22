@@ -5,9 +5,12 @@ import com.example.demo.model.entity.Task;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
-@Mapper
+
+@Mapper(componentModel = "spring")
 public interface TaskMapper {
 
-    @Mapping(target = "id", source = "id")
-    TaskDTO creatTask(Task task);
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "name", target = "name")
+    @Mapping(source = "text", target = "text")
+    TaskDTO createTask(Task task);
 }
