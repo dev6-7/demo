@@ -1,7 +1,7 @@
 package com.example.demo.model.mapper;
 
 import com.example.demo.model.dto.TaskDTO;
-import com.example.demo.model.entity.Task;
+import com.example.demo.model.entity.TaskEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -12,5 +12,10 @@ public interface TaskMapper {
     @Mapping(source = "id", target = "id")
     @Mapping(source = "name", target = "name")
     @Mapping(source = "text", target = "text")
-    TaskDTO createTask(Task task);
+    TaskDTO createTask(TaskEntity taskEntity);
+
+    @Mapping(source = "id", target = "id")
+    @Mapping(source = "name", target = "name")
+    @Mapping(source = "text", target = "text")
+    TaskEntity toEntity(TaskDTO taskEntity);
 }

@@ -1,11 +1,13 @@
 package com.example.demo.service;
 
 import com.example.demo.model.dto.TaskDTO;
-import com.example.demo.model.entity.Task;
+import com.example.demo.model.entity.TaskEntity;
 import com.example.demo.model.mapper.TaskMapper;
 import com.example.demo.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -15,7 +17,22 @@ public class TaskService {
     private final TaskMapper taskMapper;
 
     public TaskDTO getTask(Long id) {
-        Task task = taskRepository.findById(id).orElse(null);
-        return taskMapper.createTask(task);
+        TaskEntity taskEntity = taskRepository.findById(id).orElse(null);
+        return taskMapper.createTask(taskEntity);
+    }
+
+    public List<TaskDTO> getAll() {
+        List<TaskDTO> tasks = taskRepository.findAll()
+                .stream()
+                .map(taskMapper::createTask)
+                .toList();
+        return tasks;
+    }
+
+    public TaskDTO createTask(TaskDTO taskDTO) {
+        TaskEntity task = taskMapper.toEntity(taskDTO);
+        taskRepository.save(task);
+        taskDTO.setId(task.getId());
+        return taskDTO;
     }
 }
