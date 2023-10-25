@@ -5,10 +5,12 @@ import com.example.demo.model.entity.TaskEntity;
 import com.example.demo.model.mapper.TaskMapper;
 import com.example.demo.repository.TaskRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Slf4j
 @Service
 @RequiredArgsConstructor
 public class TaskService {
@@ -33,6 +35,8 @@ public class TaskService {
         TaskEntity task = taskMapper.toEntity(taskDTO);
         taskRepository.save(task);
         taskDTO.setId(task.getId());
+
+        log.info("New task created {}", task.getId());
         return taskDTO;
     }
 }

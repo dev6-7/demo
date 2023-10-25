@@ -1,17 +1,11 @@
 package com.example.demo.model.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
+@Data
 public class TaskDTO {
 
     private Long id;
     private String name;
-    private String text;
+    private String description;
 }

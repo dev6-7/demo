@@ -1,10 +1,7 @@
 package com.example.demo.model.entity;
 
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,11 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 
-@Getter
-@Setter
+@Data
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "task")
 public class TaskEntity {
 
@@ -29,6 +23,6 @@ public class TaskEntity {
     @Column(name = "name")
     private String name;
 
-    @Column(name = "text")
-    private String text;
+    @Column(name = "description")
+    private String description;
 }
