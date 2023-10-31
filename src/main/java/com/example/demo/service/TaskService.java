@@ -39,4 +39,17 @@ public class TaskService {
         log.info("New task created {}", task.getId());
         return taskDTO;
     }
+
+    public TaskDTO updateTask(TaskDTO taskDTO) {
+        TaskEntity taskEntity = taskRepository.findById(taskDTO.getId()).orElse(null);
+        if (taskEntity == null) {
+            throw new IllegalArgumentException("Task not found by id " + taskDTO.getId());
+        }
+        taskEntity.setName(taskDTO.getName());
+        taskEntity.setDescription(taskDTO.getDescription());
+        taskRepository.save(taskEntity);
+
+        log.info("Task updated {}", taskEntity.getId());
+        return taskDTO;
+    }
 }

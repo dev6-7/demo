@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -36,6 +37,12 @@ public class TaskController {
             produces = MediaType.APPLICATION_JSON_VALUE)
     public TaskDTO create(@RequestBody TaskDTO taskDTO) {
         return taskService.createTask(taskDTO);
+    }
+
+    @PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public TaskDTO update(@RequestBody TaskDTO taskDTO) {
+        return taskService.updateTask(taskDTO);
     }
 }
 
