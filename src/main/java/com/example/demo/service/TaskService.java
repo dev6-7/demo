@@ -52,4 +52,10 @@ public class TaskService {
         log.info("Task updated {}", taskEntity.getId());
         return taskDTO;
     }
+
+    public void deleteTask(Long id) {
+        taskRepository.deleteById(id);
+
+        log.info("Task deleted {}", id);
+    }
 }

@@ -8,4 +8,12 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: false
     hibernate:
-      ddl-auto: create
+      ddl-auto: validate
+    properties:
+      hibernate:
+        default_schema: tasker
+  flyway:
+    enabled: true
+    baseline-on-migrate: true
+    schemas: tasker
+    baseline-version: 0
